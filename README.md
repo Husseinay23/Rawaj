@@ -150,7 +150,7 @@ The application uses the following Supabase tables:
 - `perfume_notes` - Junction table linking perfumes to notes
 - `bottle_sizes` - Available bottle sizes and pricing
 
-See `DATABASE_SETUP.md` for detailed schema and setup instructions.
+The database schema includes tables for perfumes, notes, perfume_notes relationships, and bottle_sizes. Ensure all tables have Row Level Security (RLS) enabled with appropriate read policies.
 
 ## 🎯 Key Pages
 
