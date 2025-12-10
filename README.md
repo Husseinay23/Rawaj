@@ -59,7 +59,13 @@ A modern, elegant web application for creating and customizing personalized perf
 
 4. **Set up Supabase database**
    
-   Run the SQL scripts from the Supabase SQL Editor. See `DATABASE_SETUP.md` for detailed instructions.
+   Run the SQL scripts in your Supabase SQL Editor. Create the following tables:
+   - `perfumes` - Perfume catalog
+   - `notes` - Fragrance notes (top, middle, base)
+   - `perfume_notes` - Junction table
+   - `bottle_sizes` - Bottle sizes and pricing
+   
+   Ensure Row Level Security (RLS) is enabled with read access for all tables.
 
 5. **Run the development server**
    ```bash
