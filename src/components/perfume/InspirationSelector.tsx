@@ -3,7 +3,6 @@
 import { useEffect, useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { usePerfumeStore, type Perfume } from '@/store/perfumeStore'
-import { supabase } from '@/lib/supabaseClient'
 
 export default function InspirationSelector() {
   const { selectedPerfume, setSelectedPerfume } = usePerfumeStore()
@@ -17,17 +16,28 @@ export default function InspirationSelector() {
   useEffect(() => {
     const fetchPerfumes = async () => {
       try {
-        const { data, error } = await supabase
-          .from('perfumes')
-          .select('*')
-          .order('name', { ascending: true })
+        const response = await fetch('/api/products')
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch products')
+        }
 
-        if (error) throw error
+        const { products } = await response.json()
+        
+        // Transform products to match Perfume interface
+        const transformedProducts: Perfume[] = products.map((p: any) => ({
+          id: p.id,
+          name: p.name,
+          brand: p.brand || 'Rawaj',
+          description: p.description,
+          image: p.imageUrl,
+          inspiration_of: null,
+        }))
         
         // Fallback data if database is empty
-        if (!data || data.length === 0) {
+        if (!transformedProducts || transformedProducts.length === 0) {
           console.warn('No perfumes found in database, using fallback data')
-          const fallback = [
+          const fallback: Perfume[] = [
             { id: '1', name: 'Classic Elegance', brand: 'Rawaj', description: 'A timeless fragrance', image: null, inspiration_of: null },
             { id: '2', name: 'Modern Fresh', brand: 'Rawaj', description: 'A contemporary blend', image: null, inspiration_of: null },
             { id: '3', name: 'Oriental Spice', brand: 'Rawaj', description: 'Rich and warm', image: null, inspiration_of: null },
@@ -35,13 +45,13 @@ export default function InspirationSelector() {
           setPerfumes(fallback)
           setFilteredPerfumes(fallback)
         } else {
-          setPerfumes(data)
-          setFilteredPerfumes(data)
+          setPerfumes(transformedProducts)
+          setFilteredPerfumes(transformedProducts)
         }
       } catch (error) {
         console.error('Error fetching perfumes:', error)
         // Fallback data on error
-        const fallback = [
+        const fallback: Perfume[] = [
           { id: '1', name: 'Classic Elegance', brand: 'Rawaj', description: 'A timeless fragrance', image: null, inspiration_of: null },
           { id: '2', name: 'Modern Fresh', brand: 'Rawaj', description: 'A contemporary blend', image: null, inspiration_of: null },
         ]

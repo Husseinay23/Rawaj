@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { usePerfumeStore, type BottleSize } from '@/store/perfumeStore'
-import { supabase } from '@/lib/supabaseClient'
 
 export default function BottleSizeSelector() {
   const { selectedBottleSize, setBottleSize } = usePerfumeStore()
@@ -13,22 +12,23 @@ export default function BottleSizeSelector() {
   useEffect(() => {
     const fetchBottleSizes = async () => {
       try {
-        const { data, error } = await supabase
-          .from('bottle_sizes')
-          .select('*')
-          .order('price', { ascending: true })
+        const response = await fetch('/api/bottle-sizes')
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch bottle sizes')
+        }
 
-        if (error) throw error
+        const { sizes } = await response.json()
         
         // Fallback data if database is empty
-        if (!data || data.length === 0) {
+        if (!sizes || sizes.length === 0) {
           console.warn('No bottle sizes found in database, using fallback data')
           setBottleSizes([
             { id: '1', size: '50ml', price: 89.99 },
             { id: '2', size: '100ml', price: 159.99 },
           ])
         } else {
-          setBottleSizes(data)
+          setBottleSizes(sizes)
         }
       } catch (error) {
         console.error('Error fetching bottle sizes:', error)

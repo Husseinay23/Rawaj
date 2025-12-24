@@ -7,9 +7,8 @@ import { useTheme } from "@/contexts/ThemeContext";
 
 export default function Home() {
   const { theme } = useTheme();
-  const textColor = theme === "light" ? "text-gray-900" : "text-white";
-  const textSecondary = theme === "light" ? "text-gray-600" : "text-gray-300";
-  const bgOverlay = theme === "light" ? "bg-gray-200/80" : "bg-gray-800/80";
+  const textColor = theme === "light" ? "text-[#1A1A1A]" : "text-[#F8F8F8]";
+  const textSecondary = theme === "light" ? "text-[#4A4A4A]" : "text-[#D1D5DB]";
 
   return (
     <main className="min-h-screen w-full">
@@ -23,14 +22,10 @@ export default function Home() {
       <section className="py-20">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-16">
-            <h2
-              className={`text-3xl md:text-4xl font-bold ${textColor} mb-4 px-4 py-2 ${bgOverlay} rounded-lg backdrop-blur-sm block`}
-            >
+            <h2 className={`text-3xl md:text-4xl font-bold ${textColor} mb-4`}>
               Why Choose Rawaj
             </h2>
-            <p
-              className={`text-lg ${textSecondary} max-w-2xl mx-auto px-4 py-2 ${bgOverlay} rounded-lg backdrop-blur-sm mt-4 block`}
-            >
+            <p className={`text-lg ${textSecondary} max-w-2xl mx-auto mt-4`}>
               Experience the art of perfumery with our bespoke fragrance
               creation process.
             </p>
@@ -57,14 +52,10 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h3
-                className={`text-xl font-semibold ${textColor} mb-2 px-3 py-1 ${bgOverlay} rounded backdrop-blur-sm block`}
-              >
+              <h3 className={`text-xl font-semibold ${textColor} mb-2`}>
                 Custom Blends
               </h3>
-              <p
-                className={`${textSecondary} px-3 py-2 ${bgOverlay} rounded backdrop-blur-sm block`}
-              >
+              <p className={textSecondary}>
                 Create a fragrance that is uniquely yours with our custom
                 blending process.
               </p>
@@ -90,14 +81,10 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h3
-                className={`text-xl font-semibold ${textColor} mb-2 px-3 py-1 ${bgOverlay} rounded backdrop-blur-sm block`}
-              >
+              <h3 className={`text-xl font-semibold ${textColor} mb-2`}>
                 Premium Ingredients
               </h3>
-              <p
-                className={`${textSecondary} px-3 py-2 ${bgOverlay} rounded backdrop-blur-sm block`}
-              >
+              <p className={textSecondary}>
                 Sourced from around the world, using only the finest essential
                 oils and extracts.
               </p>
@@ -123,14 +110,10 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h3
-                className={`text-xl font-semibold ${textColor} mb-2 px-3 py-1 ${bgOverlay} rounded backdrop-blur-sm block`}
-              >
+              <h3 className={`text-xl font-semibold ${textColor} mb-2`}>
                 Expert Guidance
               </h3>
-              <p
-                className={`${textSecondary} px-3 py-2 ${bgOverlay} rounded backdrop-blur-sm block`}
-              >
+              <p className={textSecondary}>
                 Our perfumers guide you through every step to find your perfect
                 scent.
               </p>
@@ -143,31 +126,27 @@ export default function Home() {
       <section className="py-20">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-16">
-            <h2
-              className={`text-3xl md:text-4xl font-bold ${textColor} mb-4 px-4 py-2 ${bgOverlay} rounded-lg backdrop-blur-sm block`}
-            >
+            <h2 className={`text-3xl md:text-4xl font-bold ${textColor} mb-4`}>
               How It Works
             </h2>
-            <p
-              className={`text-lg ${textSecondary} max-w-2xl mx-auto px-4 py-2 ${bgOverlay} rounded-lg backdrop-blur-sm mt-4 block`}
-            >
+            <p className={`text-lg ${textSecondary} max-w-2xl mx-auto mt-4`}>
               Simple steps to create your perfect fragrance.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="w-12 h-12 bg-gray-900 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
+              <div
+                className={`w-12 h-12 ${
+                  theme === "light" ? "bg-[#1A1A1A]" : "bg-[#8B7355]"
+                } text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold`}
+              >
                 1
               </div>
-              <h3
-                className={`text-xl font-semibold ${textColor} mb-2 px-3 py-1 ${bgOverlay} rounded backdrop-blur-sm block`}
-              >
+              <h3 className={`text-xl font-semibold ${textColor} mb-2`}>
                 Choose Your Notes
               </h3>
-              <p
-                className={`${textSecondary} px-3 py-2 ${bgOverlay} rounded backdrop-blur-sm block`}
-              >
+              <p className={textSecondary}>
                 Select from our curated collection of top, middle, and base
                 notes.
               </p>
@@ -177,14 +156,10 @@ export default function Home() {
               <div className="w-12 h-12 bg-gray-900 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
                 2
               </div>
-              <h3
-                className={`text-xl font-semibold ${textColor} mb-2 px-3 py-1 ${bgOverlay} rounded backdrop-blur-sm block`}
-              >
+              <h3 className={`text-xl font-semibold ${textColor} mb-2`}>
                 Customize Your Blend
               </h3>
-              <p
-                className={`${textSecondary} px-3 py-2 ${bgOverlay} rounded backdrop-blur-sm block`}
-              >
+              <p className={textSecondary}>
                 Work with our experts to perfect the proportions and create your
                 signature scent.
               </p>
@@ -194,14 +169,10 @@ export default function Home() {
               <div className="w-12 h-12 bg-gray-900 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
                 3
               </div>
-              <h3
-                className={`text-xl font-semibold ${textColor} mb-2 px-3 py-1 ${bgOverlay} rounded backdrop-blur-sm block`}
-              >
+              <h3 className={`text-xl font-semibold ${textColor} mb-2`}>
                 Receive Your Creation
               </h3>
-              <p
-                className={`${textSecondary} px-3 py-2 ${bgOverlay} rounded backdrop-blur-sm block`}
-              >
+              <p className={textSecondary}>
                 Your custom perfume is handcrafted and delivered in elegant
                 packaging.
               </p>
@@ -213,27 +184,27 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-20">
         <div className="container mx-auto px-4 max-w-4xl text-center">
-          <h2
-            className={`text-3xl md:text-4xl font-bold ${textColor} mb-4 px-4 py-2 ${bgOverlay} rounded-lg backdrop-blur-sm block`}
-          >
+          <h2 className={`text-3xl md:text-4xl font-bold ${textColor} mb-4`}>
             Ready to Create Your Signature Scent?
           </h2>
-          <p
-            className={`text-lg ${textSecondary} mb-8 max-w-2xl mx-auto px-4 py-2 ${bgOverlay} rounded-lg backdrop-blur-sm mt-4 block`}
-          >
+          <p className={`text-lg ${textSecondary} mb-8 max-w-2xl mx-auto mt-4`}>
             Start your journey with Rawaj and discover a fragrance that truly
             represents you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/build"
-              className="px-8 py-4 bg-gray-900 text-white rounded-lg font-semibold text-lg shadow-md hover:shadow-lg hover:bg-gray-800 transition-all"
+              className="px-8 py-4 bg-[#8B7355] text-white rounded-lg font-semibold text-lg hover:opacity-90 transition-opacity"
             >
               Start Building
             </a>
             <a
               href="/notes"
-              className="px-8 py-4 bg-white text-gray-900 border-2 border-gray-900 rounded-lg font-semibold text-lg hover:bg-gray-50 transition-colors"
+              className={`px-8 py-4 ${
+                theme === "light" ? "bg-white" : "bg-[#1E293B]"
+              } ${textColor} border-2 ${
+                theme === "light" ? "border-[#1A1A1A]" : "border-[#F8F8F8]"
+              } rounded-lg font-semibold text-lg hover:opacity-80 transition-opacity`}
             >
               Explore Notes
             </a>
